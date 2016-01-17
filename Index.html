@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Brewsteri 2.0</title>
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-pure-slider/app/package/angular-pure-slider.min.js"></script>
+
+    <style>
+        .col-centered {
+            float: none;
+            margin: 0, auto;
+            text-align:center; 
+            vertical-align:middle;
+        }
+        
+        .slider {
+            background-color: #DFF0D8;
+            box-shadow: rgb(201, 216, 194) 0px 1px 0px 0px inset;
+            height: 12px;
+            width: 100%;
+        }
+        
+        .slider-selected {
+            background-color: #5CB85C;
+            box-shadow: rgb(97, 145, 97) 0px 1px 0px 0px inset;
+            float: left;
+            height: 100%;
+        }
+        
+        .slider-pointer {
+            background: #fff;
+            background: linear-gradient(#fff, #f6f6f6) #fff;
+            background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#f6f6f6)) #fff;
+            background: -webkit-linear-gradient(#fff, #f6f6f6) #fff;
+            border-radius: 50%;
+            webkit-border-radius: 50%;
+            box-shadow: -2px 2px 4px rgba(25, 70, 94, 0.6), 0px 2px 8px rgba(25, 70, 94, 0.1);
+            webkit-box-shadow: -2px 2px 4px rgba(25, 70, 94, 0.6), 0px 2px 8px rgba(25, 70, 94, 0.1);
+            cursor: pointer;
+            float: right;
+            height: 50px;
+            margin-right: -25px;
+            margin-top: -19px;
+            width: 50px;
+        }
+        
+        .slider-pointer:focus {
+            outline: 0;
+        }
+        
+        .slider-pointer:after {
+            content: '';
+            display: block;
+            height: 25px;
+            left: 12px;
+            position: relative;
+            top: 12px;
+            width: 25px;
+        }
+        
+        .slider-pointer:hover {
+            box-shadow: -2px 2px 4px rgba(25, 70, 94, 1), 0px 2px 8px rgba(25, 70, 94, 1);
+            webkit-box-shadow: -2px 2px 4px rgba(25, 70, 94, 1), 0px 2px 8px rgba(25, 70, 94, 1);
+        }
+        
+        .slider-wrapper {
+            padding: 50px 0 50px;
+        }
+        
+        .slider-container {
+            position: relative;
+        }
+        
+        @media screen and (max-width: 500px) {
+            .slider-demo form input {
+                display: block;
+                width: 100%;
+                margin-bottom: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="row">
+    
+    <div class="center-block>
+            <section class=" slider-demo" ng-app="demo" ng-controller="demoCtrl">
+                <h1><span class="label label-default" type="text" ng-bind="magicNumber"></span></h1>
+                <!--            <form>
+                <label for="value ">Slider Value</label>
+                <input type="text " id="value " ng-blur="slider=sliderInputValue " ng-model="sliderInputValue " />
+                <br>
+                <label for="value ">Magic number</label>
+                <input type="text " ng-model="magicNumber " />
+
+            </form>-->
+                <div class="slider-container">
+                    <div wn-slider ng-model="slider " min="min " max="max " class="slider-wrapper"></div>
+                </div>
+            </section>
+       </div></div>
+        <script>
+            var app = angular.module('demo', ['angular-pure-slider'])
+                .controller('demoCtrl', ['$scope',
+            function ($scope) {
+
+                        $scope.sliderInputValue = 60;
+                        $scope.maxValue = 750;
+                        $scope.minValue = 200;
+
+                        $scope.slider = 60;
+                        $scope.min = 200;
+                        $scope.max = 750;
+
+
+
+
+                        // Updates the sliderInputValue when slider used
+                        $scope.$watch('slider', function (newValue) {
+                            $scope.sliderInputValue = newValue;
+                            $scope.myMessage = 'The slider value is: ' + newValue;
+                            //$scope.magicNumber = ( newValue / 16.6945 ) + 3.5;
+                            $scope.magicNumber = Math.round((newValue / 17.42) + 4);
+                            $("#magicNumber").text(newValue);
+
+                            //                        /* Example 6 */
+                            //			$("#ex6 ").slider();
+                            //			$("#ex6 ").on('slide', function(slideEvt) {
+                            //				$("#ex6SliderVal ").text(slideEvt.value);
+                            //			});
+
+
+                        });
+
+                        /*            $scope.$watch('min', function (newValue) {
+                                      $scope.minValue= newValue;
+                                    });
+
+                                    $scope.$watch('max', function (newValue) {
+                                      $scope.maxValue= newValue;
+                                    });
+
+                                    $scope.increaseSlider = function () {
+                                      $scope.slider++;
+                                    };
+
+                                    $scope.decreaseSlider = function () {
+                                      $scope.slider--;
+                                    };*/
+
+        }]);
+        </script>
+</body>
+
+</html>
