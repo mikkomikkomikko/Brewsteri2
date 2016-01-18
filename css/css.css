@@ -4,7 +4,12 @@ body {
   padding-bottom: 20px;
     
 }
-.div {
+.icon {
+    margin-right: 5px;
+    height: 50px;
+    width: auto;
+}
+,div {
     border: 1px solid #000000;
 }
 
@@ -73,6 +78,7 @@ body {
 .big {
   font-size: 150px;
   font-weight: 900;
+  color: #555;
 }
 
 
