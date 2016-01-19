@@ -10,6 +10,11 @@ body {
     border: 1px solid #000000;
 }
 
+
+
+.slider-demo {
+    height: 100%
+}
 .big {
     font-size: 80px;
     font-weight: 900;
