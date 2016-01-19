@@ -29,28 +29,82 @@
 
     <div class="container">
         <div class="header clearfix">
-            <!--<nav>
-                <ul class="nav nav-pills pull-right">
-                                       
-                    <li role="presentation" class="active"><a href="#">Home</a></li>
-                    <li role="presentation"><a href="#">About</a></li>
-                    <li role="presentation"><a href="#">Contact</a></li>
-                </ul>
-            </nav>-->
-            <h3 class="text-muted"><img src="images/Chemex.svg" class="icon"> Brewsteri 2.0 </h3>
+            <!-- <nav>
+        <ul class="nav nav-pills pull-right">
+
+          <li role="presentation" class="active"><a href="#">Home</a></li>
+          <li role="presentation"><a href="#">About</a></li>
+          <li role="presentation"><a href="#">Contact</a></li>
+        </ul>
+      </nav> -->
+            <h3 class="text-muted"><img src="images/Chemex.svg" class="icon-header"> Brewsteri 2.0 </h3>
         </div>
 
         <div class="jumbotron">
 
             <section class="slider-demo" ng-app="demo" ng-controller="demoCtrl">
-               
-                <div class="row marketing">
+
+                <!--Water -->
+                <div class="row">
+                    <div class="col-xs-4 icon-align">
+                        <img src="images/water.svg" class="icon blue">
+                    </div>
+                    <div class="col-xs-4 amount">
+                        <div class="row amount-title">Water</div>
+                        <div class="row"><span class="big" type="text" ng-bind="magicNumber"></span></div>
+                    </div>
+                    <div class="col-xs-4">
+                    </div>
 
 
-                <div class="col-lg-12 big">
-                <span type="text" ng-bind="magicNumber" text-align="right"></span> </div>
+                </div>
 
-</div>
+                <!--Beans -->
+                <div class="row">
+                    <div class="col-xs-4 icon-align">
+                        <img src="images/Beans.svg" class="icon">
+                    </div>
+                    <div class="col-xs-4 amount">
+                        <div class="row amount-title">Beans</div>
+                        <div class="row"><span class="big" type="text" ng-bind="magicNumber"></span></div>
+                    </div>
+
+
+                    <div class="col-xs-4">
+                    </div>
+                </div>
+
+
+
+
+                <!--Coffee -->
+                <div class="row">
+                    <div class="col-xs-4 icon-align">
+                        <img src="images/Chemex.svg" class="icon">
+                    </div>
+                    <div class="col-xs-4 amount">
+                        <div class="row amount-title">Coffee</div>
+                        <div class="row"><span class="big" type="text" ng-bind="magicNumber"></span></div>
+                    </div>
+
+                    <div class="col-xs-4">
+                    </div>
+                </div>
+
+
+                <!--Cups -->
+                <div class="row">
+                    <div class="col-xs-4 icon-align">
+                        <img src="images/Coffee.svg" class="cup">
+                    </div>
+                    <div class="col-xs-4 amount">
+                        <div class="row amount-title">Cups</div>
+                        <div class="row"><span class="big" type="text" ng-bind="magicNumber"></span></div>
+
+                    </div>
+                    <div class="col-xs-4">
+                    </div>
+                </div>
 
                 <div wn-slider ng-model="slider" min="min" max="max" class="slider-wrapper">
                 </div>
@@ -60,18 +114,18 @@
             </section>
         </div>
 
-    
 
 
-    <footer class="footer">
-        <p>&copy; 2016 mikkomikkomikko</p>
-    </footer>
+
+        <footer class="footer">
+            <p>&copy; 2016 mikkomikkomikko</p>
+        </footer>
     </div>
     <!-- /container -->
     <script>
         var app = angular.module('demo', ['angular-pure-slider'])
             .controller('demoCtrl', ['$scope',
-            function ($scope) {
+        function ($scope) {
 
                     $scope.sliderInputValue = 1;
                     $scope.maxValue = 1000;
@@ -87,9 +141,11 @@
                     $scope.$watch('slider', function (newValue) {
                         $scope.sliderInputValue = newValue;
                         $scope.myMessage = 'The slider value is: ' + newValue;
-                        //$scope.magicNumber = ( newValue / 16.6945 ) + 3.5;
-                        //$scope.magicNumber = Math.round((newValue / 17.42) + 4);
-                        $scope.magicNumber = newValue;
+                        //$scope.magicNumber    = ( newValue / 16.6945 ) + 3.5;
+                        //$scope.magicNumber    = Math.round((newValue / 17.42) + 4);
+                        //$scope.magicNumber    = newValue;
+                        $scope.magicNumber = Math.floor(newValue / 13.6945);
+                        //console.log(Math.floor(newValue / 13.6945))
 
                     });
 
@@ -108,23 +164,24 @@
                     $scope.decreaseSlider = function () {
                         $scope.slider--;
                     };
-                    
+
                     // Presets
                     $scope.preset24 = function () {
                         $scope.magicNumber = 24;
                         $scope.slider = 24;
                     };
-                
+
                     $scope.preset30 = function () {
                         $scope.magicNumber = 30;
                         $scope.slider = 30;
                     };
-                
+
                     $scope.preset50 = function () {
                         $scope.magicNumber = 50;
                         $scope.slider = 50;
                     };
-        }]);
+        }
+      ]);
     </script>
 
 </body>
